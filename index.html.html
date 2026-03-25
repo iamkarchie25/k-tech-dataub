@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTN Affordable Bundles</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FFCC00 0%, #4B0082 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            color: #333;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 { color: #4B0082; margin-bottom: 1.5rem; }
+        
+        .form-group { margin-bottom: 1rem; text-align: left; }
+        
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #FFCC00;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        button:hover { background-color: #e6b800; }
+
+        .hidden { display: none; }
+
+        .bundle-item {
+            background: #f9f9f9;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 5px solid #4B0082;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .instruction-box {
+            text-align: left;
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>MTN Affordable Bundles</h1>
+
+    <div id="auth-choice">
+        <button onclick="showForm('signup')">Sign Up</button>
+        <button onclick="showForm('login')" style="background: #4B0082; color: whit;">Login</button>
+    </div>
+
+    <div id="signup-form" class="hidden">
+        <h3>Create Account</h3>
+        <div class="form-group">
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email Address" required>
+            <input type="tel" placeholder="Phone Number" required>
+            <input type="password" placeholder="Password" required>
+        </div>
+        <button onclick="showBundles()">Register</button>
+    </div>
+
+    <div id="login-form" class="hidden">
+        <h3>Welcome Back</h3>
+        <div class="form-group">
+            <input type="tel" placeholder="Phone Number" required>
+            <input type="password" placeholder="Password" required>
+        </div>
+        <button onclick="showBundles()">Login</button>
+    </div>
+
+    <div id="bundle-list" class="hidden">
+        <h3>Select Your Bundle</h3>
+        <div class="bundle-item" onclick="showDeposit()"><span>3GB Data</span> <b>10 GH₵</b></div>
+        <div class="bundle-item" onclick="showDeposit()"><span>5GB Data</span> <b>15 GH₵</b></div>
+        <div class="bundle-item" onclick="showDeposit()"><span>5GB + 50 Mins</span> <b>25 GH₵</b></div>
+        <div class="bundle-item" onclick="showDeposit()"><span>3GB + 60 Mins</span> <b>15 GH₵</b></div>
+        <div class="bundle-item" onclick="showDeposit()"><span>10GB Data</span> <b>35 GH₵</b></div>
+    </div>
+
+    <div id="deposit-page" class="hidden">
+        <h3>Payment Instructions</h3>
+        <div class="instruction-box">
+            <ol>
+                <li>Dial <b>*170#</b></li>
+                <li>Choose <b>1</b> (Transfer Money)</li>
+                <li>Select <b>5</b> (Other networks)</li>
+                <li>Choose <b>Telecel</b></li>
+<li>Enter <b>0500374294</b> (Repeat twice)</li>
+                <li>Enter Amount & Reference (Username)</li>
+                <li>Enter MoMo PIN</li>
+            </ol>
+        </div>
+        <button onclick="location.reload()">Refresh Page</button>
+    </div>
+</div>
+
+<script>
+    function showForm(type) {
+        document.getElementById('auth-choice').classList.add('hidden');
+        document.getElementById(type + '-form').classList.remove('hidden');
+    }
+
+    function showBundles() {
+        document.getElementById('signup-form').classList.add('hidden');
+        document.getElementById('login-form').classList.add('hidden');
+        document.getElementById('bundle-list').classList.remove('hidden');
+    }
+
+    function showDeposit() {
+        document.getElementById('bundle-list').classList.add('hidden');
+        document.getElementById('deposit-page').classList.remove('hidden');
+    }
+</script>
+
+</body>
+</html>
